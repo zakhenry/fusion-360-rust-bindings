@@ -1,0 +1,15 @@
+{
+	"autodeskProduct":	"Fusion360",
+	"type":	"addin",
+	"author":	"Zak Henry",
+	"description":	{
+		"":	"Demo of using rust lang for Fusion 360 addin."
+	},
+	"supportedOS":	"windows|mac",
+	"editEnabled":	true,
+	"id":	"6ad3414d-a6a0-44db-a67c-41292ea21978",
+	"version":	"0.1",
+	"runOnStartup":	false,
+	"sourcewindows":	"todo.vcxproj",
+	"sourcemac":	"todo.xcodeproj"
+}
