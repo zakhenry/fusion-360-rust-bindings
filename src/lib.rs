@@ -1,3 +1,9 @@
+#![allow(non_upper_case_globals)]
+#![allow(non_camel_case_types)]
+#![allow(non_snake_case)]
+
+include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
+
 use std::fs::OpenOptions;
 use std::io::prelude::*;
 use chrono::prelude::{DateTime, Utc};
@@ -31,7 +37,27 @@ fn main() {
 #[no_mangle]
 pub extern "C" fn run(_context: *const c_char) -> bool {
 
-    debug_append("run", "Addin started");
+    debug_append("run", "Addin started 2");
+
+
+    let my_string = "foo bar baz string string string";
+
+    // Convert the string to a slice of bytes
+    let bytes_slice = my_string.as_bytes();
+
+    // assert!(bytes_slice.len() >= 24, "String is too short");
+
+    // Create a reference to the first three u64 elements in the bytes slice
+    let u64_slice = unsafe { &*(bytes_slice.as_ptr() as *const [u64; 3]) };
+
+
+    unsafe {
+
+        adsk_core_Application::log(u64_slice, adsk_core_LogLevels_InfoLogLevel, adsk_core_LogTypes_ConsoleLogType);
+        debug_append("run", "Application should have logged");
+
+    }
+
 
     true
 }

@@ -11,3 +11,6 @@ chrono = "0.4.31"
 [lib]
 crate-type = ["cdylib"]
 bench = false
+
+[build-dependencies]
+bindgen = "0.69.1"
